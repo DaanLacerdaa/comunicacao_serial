@@ -26,6 +26,7 @@ add_executable(main
     drivers/display.c 
     drivers/buttons.c 
     drivers/neopixel.c
+    drivers/rgb_led.c
 )
 
 target_link_libraries(main 
