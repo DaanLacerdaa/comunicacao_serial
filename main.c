@@ -28,3 +28,4 @@ static void handle_btn_b() {
     led_azul_ligado = !led_azul_ligado;
     rgb_led_set_color(0, 0, led_azul_ligado); // Acende/Apaga o LED azul
     display_string(led_azul_ligado ? "LED Azul: Ligado" : "LED Azul: Desligado");
+}
