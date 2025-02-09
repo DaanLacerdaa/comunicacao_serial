@@ -21,16 +21,14 @@ project(bitdog_project)
 
 pico_sdk_init()
 
-add_executable(main 
-    main.c 
-    drivers/display.c 
-    drivers/buttons.c 
+add_executable(main
+    main.c
+    drivers/display.c
+    drivers/buttons.c
     drivers/neopixel.c
     drivers/rgb_led.c
-    drivers/ssd1306.c
+    drivers/ssd1306.c 
     drivers/ws2812.c
-   
-
 )
 
 target_link_libraries(main 
