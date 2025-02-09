@@ -6,6 +6,7 @@
 #include "drivers/neopixel.h"
 #include "drivers/rgb_led.h"
 #include "drivers/ws2812.pio.h"
+#include "ssd1306.h"
 #include "drivers/font.h"
 
 #define UART_ID uart0
@@ -53,7 +54,7 @@ int main() {
             printf("Caractere recebido: %c\n", ch);
 
             // Exibe o caractere no display SSD1306
-            display_char(&disp, ch); // Passa o endereço de disp
+            ssd1306_draw_char(&disp, ch, 0, 0); 
             display_update(&disp);   // Passa o endereço de disp
 
             // Se for um número entre 0 e 9, exibe o símbolo correspondente na matriz WS2812
