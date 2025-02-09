@@ -1,6 +1,6 @@
 #include "neopixel.h"
 
-#include "drivers/ws2812.pio.h" 
+#include "ws2812.pio.h" 
 
 #define MATRIX_PIN 7
 #define MATRIX_COUNT 25 // 5x5
