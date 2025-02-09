@@ -1,11 +1,4 @@
-/**
- * Copyright (c) 2022 Raspberry Pi (Trading) Ltd.
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
 
-// Vertical bitmaps, A-Z, 0-9. Each is 8 pixels high and wide
-// These are defined vertically to make them quick to copy to FB
 
 static uint8_t font[] = {
           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Nothing

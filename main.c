@@ -1,10 +1,10 @@
 #include "pico/stdlib.h"
+#include <stdio.h>
 #include "hardware/uart.h"
 #include "drivers/display.h"
 #include "drivers/buttons.h"
 #include "drivers/neopixel.h"
 #include "drivers/rgb_led.h"
-#include "drivers/font.h" 
 #include "drivers/ws2812.pio.h" // Arquivo PIO para WS2812
 
 #define UART_ID uart0

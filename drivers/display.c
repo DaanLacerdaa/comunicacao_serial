@@ -1,5 +1,5 @@
 #include "display.h"
-
+#include "ssd1306.h"
 #define I2C_PORT i2c0
 
 SSD1306_t disp; // Variável global para o display
