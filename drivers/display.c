@@ -5,7 +5,7 @@
 
 #define I2C_PORT i2c0
 
-SSD1306_t disp; // Variável global para o display
+ssd1306_t disp; // Variável global para o display
 
 void display_init() {
     disp.width = 128;
@@ -28,7 +28,7 @@ void display_char(char c) {
 }
 
 void display_string(const char *msg) {
-    ssd1306_puts(&disp, msg, &font_8x8); // Use sua fonte 8x8 ou outra de sua preferência. Certifique-se que font_8x8 esteja definida.
+    ssd1306_puts(&disp, msg, &font); 
 }
 
 void display_update() {
