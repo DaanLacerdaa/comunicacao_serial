@@ -247,3 +247,8 @@ void ssd1306_update(ssd1306_t *disp) {
         i2c_write_blocking(disp->i2c_port, disp->address, disp->ram_buffer + (page * disp->width), disp->width, false);
     }
 }
+void ssd1306_clear(ssd1306_t *ssd) {
+  for (size_t i = 0; i < ssd->bufsize; ++i) {
+      ssd->ram_buffer[i] = 0x00; // Limpa o buffer
+  }
+}

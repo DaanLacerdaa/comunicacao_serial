@@ -14,7 +14,6 @@ typedef struct {
 } font_t;
 
 // Você pode adicionar os dados da sua fonte aqui ou em outro arquivo
-extern const font_t my_font; // Declaração da fonte (exemplo)
 
 
 
