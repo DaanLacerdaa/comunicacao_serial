@@ -6,7 +6,7 @@
 #include "drivers/neopixel.h"
 #include "drivers/rgb_led.h"
 #include "drivers/ws2812.pio.h"
-#include "drivers/ssd1306.h"
+
 #include "drivers/font.h"
 
 #define UART_ID uart0
