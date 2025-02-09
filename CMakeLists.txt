@@ -27,6 +27,8 @@ add_executable(main
     drivers/buttons.c 
     drivers/neopixel.c
     drivers/rgb_led.c
+    drivers/ssd1306.c
+    drivers/ws2812.c
    
 
 )
