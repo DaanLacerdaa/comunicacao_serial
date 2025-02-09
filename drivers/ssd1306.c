@@ -1,5 +1,8 @@
+#include <stdlib.h> 
+#include "pico/stdlib.h"
+#include "hardware/i2c.h"
+#include "font.h"       
 #include "ssd1306.h"
-#include "font.h"
 
 void ssd1306_init(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_vcc, uint8_t address, i2c_inst_t *i2c) {
   ssd->width = width;
@@ -192,5 +195,10 @@ void ssd1306_draw_string(ssd1306_t *ssd, const char *str, uint8_t x, uint8_t y)
     {
       break;
     }
+  }
+}
+void ssd1306_clear(ssd1306_t *ssd) {
+  for (size_t i = 0; i < ssd->bufsize; ++i) {
+      ssd->ram_buffer[i] = 0x00;
   }
 }

@@ -1,7 +1,8 @@
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
-#include "ssd1306.h"
 #include "font.h"
+#include "ssd1306.h"
+
 
 #define I2C_PORT i2c0
 
