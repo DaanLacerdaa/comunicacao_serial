@@ -24,7 +24,7 @@ void display_init() {
 }
 
 void display_char(char c) {
-    ssd1306_putc(&disp, c, &font_8x8); // Use sua fonte 8x8 ou outra de sua preferência. Certifique-se que font_8x8 esteja definida.
+    ssd1306_putc(&disp, c, &font);
 }
 
 void display_string(const char *msg) {
