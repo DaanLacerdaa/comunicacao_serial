@@ -5,7 +5,6 @@
 #define FONT_WIDTH 8
 #define FONT_HEIGHT 8
 
-
 typedef struct {
     const uint8_t *data; // Ponteiro para os dados da fonte
     char start_char;      // Primeiro caractere da fonte
@@ -13,7 +12,6 @@ typedef struct {
     uint8_t char_height; // Altura de cada caractere (em pixels)
 } font_t;
 
-// Você pode adicionar os dados da sua fonte aqui ou em outro arquivo
 
 
 

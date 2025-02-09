@@ -5,9 +5,8 @@
 #include "drivers/buttons.h"
 #include "drivers/neopixel.h"
 #include "drivers/rgb_led.h"
-#include "drivers/ws2812.pio.h" 
+#include "drivers/ws2812.pio.h"
 #include "drivers/font.h"
-
 
 #define UART_ID uart0
 #define BAUD_RATE 115200
@@ -37,16 +36,14 @@ static void handle_btn_b() {
 
 int main() {
     stdio_init_all();
-    uart_init(UART_ID, BAUD_RATE); // Inicializa a UART
+    uart_init(UART_ID, BAUD_RATE);
 
     // Inicializa os drivers
-    display_init();
+    ssd1306_t disp; // Instancia a estrutura do display
+    display_init(&disp); // Passa o endereço para inicializar
     buttons_init(handle_btn_a, handle_btn_b);
     neopixel_init();
-    rgb_led_init(LED_RED, LED_GREEN, LED_BLUE); // Inicializa o driver RGB
-
-    // Configura o LED RGB inicialmente apagado
-    rgb_led_set_color(0, 0, 0);
+    rgb_led_init(LED_RED, LED_GREEN, LED_BLUE);
 
     // Loop principal
     while (true) {
@@ -56,8 +53,8 @@ int main() {
             printf("Caractere recebido: %c\n", ch);
 
             // Exibe o caractere no display SSD1306
-            display_char(ch);
-            display_update();
+            display_char(&disp, ch); // Passa o endereço de disp
+            display_update(&disp);   // Passa o endereço de disp
 
             // Se for um número entre 0 e 9, exibe o símbolo correspondente na matriz WS2812
             if (ch >= '0' && ch <= '9') {

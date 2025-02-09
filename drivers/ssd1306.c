@@ -1,6 +1,5 @@
 #include "ssd1306.h"
 #include "font.h"
-#include <string.h>
 
 void ssd1306_init(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_vcc, uint8_t address, i2c_inst_t *i2c) {
   ssd->width = width;
@@ -84,27 +83,6 @@ void ssd1306_fill(ssd1306_t *ssd, bool value) {
   for (uint8_t i = 1; i < ssd->bufsize; ++i)
     ssd->ram_buffer[i] = byte;
 }*/
-
-void ssd1306_draw_column(ssd1306_t *disp, uint8_t column_data) {
-  static uint8_t x = 0; // Posição X atual no buffer
-
-  if (x >= disp->width) {
-      return; // Evita ultrapassar os limites do display
-  }
-
-  // Percorre cada linha da coluna e armazena os dados no buffer
-  for (uint8_t row = 0; row < 8; row++) {
-      if (column_data & (1 << row)) {
-        disp->ram_buffer[x + (row / 8) * disp->width] |= (1 << (row % 8)); // Correto
-        
-      } else {
-        disp->ram_buffer[x + (row / 8) * disp->width] &= ~(1 << (row % 8)); // Correto
-      }
-  }
-
-  x++; // Avança para a próxima posição no buffer
-}
-
 
 void ssd1306_fill(ssd1306_t *ssd, bool value) {
     // Itera por todas as posições do display
@@ -214,41 +192,5 @@ void ssd1306_draw_string(ssd1306_t *ssd, const char *str, uint8_t x, uint8_t y)
     {
       break;
     }
-  }
-}
-
-
-// Envia um único caractere para o display
-void ssd1306_putc(ssd1306_t *disp, char c, const font_t *font) {
-    if (!font) return;
-    
-    // Obtém os dados da fonte para o caractere
-    const uint8_t *bitmap = font->data + (c - font->start_char) * font->char_width;
-
-    // Define a posição para desenhar
-    for (int i = 0; i < font->char_width; i++) {
-        ssd1306_draw_column(disp, bitmap[i]); // Função que escreve uma coluna de pixels
-    }
-}
-
-// Escreve uma string no display
-void ssd1306_puts(ssd1306_t *disp, const char *msg, const font_t *font) {
-    while (*msg) {
-        ssd1306_putc(disp, *msg++, font);
-    }
-}
-
-// Atualiza o display com os dados armazenados no buffer
-void ssd1306_update(ssd1306_t *disp) {
-    for (uint8_t page = 0; page < (disp->height / 8); page++) {
-        uint8_t command[] = { 0xB0 | page, 0x00, 0x10 };
-        i2c_write_blocking(disp->i2c_port, disp->address, command, sizeof(command), true);
-        
-        i2c_write_blocking(disp->i2c_port, disp->address, disp->ram_buffer + (page * disp->width), disp->width, false);
-    }
-}
-void ssd1306_clear(ssd1306_t *ssd) {
-  for (size_t i = 0; i < ssd->bufsize; ++i) {
-      ssd->ram_buffer[i] = 0x00; // Limpa o buffer
   }
 }
