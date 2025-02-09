@@ -5,7 +5,7 @@
 #include "drivers/buttons.h"
 #include "drivers/neopixel.h"
 #include "drivers/rgb_led.h"
-#include "ws2812.pio.h" 
+#include "drivers/ws2812.pio.h" 
 #include "drivers/font.h"
 
 
