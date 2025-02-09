@@ -95,9 +95,10 @@ void ssd1306_draw_column(ssd1306_t *disp, uint8_t column_data) {
   // Percorre cada linha da coluna e armazena os dados no buffer
   for (uint8_t row = 0; row < 8; row++) {
       if (column_data & (1 << row)) {
-          disp->buffer[x + (row / 8) * disp->width] |= (1 << (row % 8));
+        disp->ram_buffer[x + (row / 8) * disp->width] |= (1 << (row % 8)); // Correto
+        
       } else {
-          disp->buffer[x + (row / 8) * disp->width] &= ~(1 << (row % 8));
+        disp->ram_buffer[x + (row / 8) * disp->width] &= ~(1 << (row % 8)); // Correto
       }
   }
 
@@ -243,6 +244,6 @@ void ssd1306_update(ssd1306_t *disp) {
         uint8_t command[] = { 0xB0 | page, 0x00, 0x10 };
         i2c_write_blocking(disp->i2c_port, disp->address, command, sizeof(command), true);
         
-        i2c_write_blocking(disp->i2c_port, disp->address, disp->buffer + (page * disp->width), disp->width, false);
+        i2c_write_blocking(disp->i2c_port, disp->address, disp->ram_buffer + (page * disp->width), disp->width, false);
     }
 }

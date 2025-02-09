@@ -5,6 +5,19 @@
 #define FONT_WIDTH 8
 #define FONT_HEIGHT 8
 
+
+typedef struct {
+    const uint8_t *data; // Ponteiro para os dados da fonte
+    char start_char;      // Primeiro caractere da fonte
+    uint8_t char_width;   // Largura de cada caractere (em pixels)
+    uint8_t char_height; // Altura de cada caractere (em pixels)
+} font_t;
+
+// Você pode adicionar os dados da sua fonte aqui ou em outro arquivo
+extern const font_t my_font; // Declaração da fonte (exemplo)
+
+
+
 // Definição da fonte *dentro* do font.h
 static uint8_t font[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Nothing
@@ -47,3 +60,4 @@ static uint8_t font[] = {
 };
 
 #endif
+
