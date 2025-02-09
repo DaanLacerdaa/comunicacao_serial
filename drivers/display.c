@@ -25,3 +25,7 @@ void display_init(ssd1306_t *disp) {
 void display_update(ssd1306_t *disp) {
     ssd1306_send_data(disp); // Função correta para enviar os dados
 }
+
+void display_string(ssd1306_t *disp, const char *msg) {
+    ssd1306_draw_string(disp, msg, 0, 0); 
+}
