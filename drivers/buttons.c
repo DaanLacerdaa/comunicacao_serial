@@ -15,7 +15,7 @@ static void gpio_isr(uint gpio, uint32_t events) {
     last_interrupt = to_ms_since_boot(get_absolute_time());
 }
 
-void buttons_init(button_callback_t a_cb, button_callback_t b_cb) {
+void button_init(button_callback_t a_cb, button_callback_t b_cb) {
     btn_a_cb = a_cb;
     btn_b_cb = b_cb;
 
@@ -28,4 +28,7 @@ void buttons_init(button_callback_t a_cb, button_callback_t b_cb) {
 
     gpio_set_irq_enabled_with_callback(BTN_A, GPIO_IRQ_EDGE_FALL, true, gpio_isr); // Interrupção na borda de descida
     gpio_set_irq_enabled_with_callback(BTN_B, GPIO_IRQ_EDGE_FALL, true, gpio_isr); // Interrupção na borda de descida
+}
+bool button_is_pressed(uint pin) {
+    return gpio_get(pin) == 0;  // O pino estará em nível baixo quando o botão for pressionado
 }
