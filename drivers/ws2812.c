@@ -5,8 +5,7 @@
 #define WS2812_PIO pio0
 #define WS2812_SM 0
 #define WS2812_PIN 7
-#define NUM_LEDS 25 // Exemplo
-
+#define NUM_LEDS 25 
 // Buffer para armazenar as cores dos LEDs
 uint32_t neopixel_buffer[NUM_LEDS];
 
