@@ -12,7 +12,7 @@ Este projeto explora o uso de periféricos do RP2040, combinando comunicação s
 
 ## ⚙️ Componentes
 
-*   **️ Display SSD1306:** (I2C - GPIOs 14 e 15)
+*   ** Display SSD1306:** (I2C - GPIOs 14 e 15)
 *   ** Matriz 5x5 de LEDs WS2812:** (GPIO 7)
 *   **🟢 LED RGB:** (GPIOs 11, 12 e 13)
 *   ** Botão A:** (GPIO 5)
