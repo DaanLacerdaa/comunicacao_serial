@@ -36,7 +36,7 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 # Nome do projeto
-project(bitdog_project)
+project(main)
 
 # Inicialização do SDK
 pico_sdk_init()
